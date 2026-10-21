@@ -1,0 +1,8 @@
+# CatBoost training temporary logs
+catboost_info/
+**/catboost_info/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class

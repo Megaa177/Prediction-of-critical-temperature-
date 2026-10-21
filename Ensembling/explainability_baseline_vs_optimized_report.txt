@@ -1,0 +1,52 @@
+================================================================================
+EXPLAINABILITY BENCHMARK: BASELINE VS OPTIMIZED ENSEMBLE
+================================================================================
+Target: critical_temp (Superconductor Critical Temperature in Kelvin)
+Dataset: train.csv (21263 samples, 81 features)
+Splits: 70% Train, 15% Validation, 15% Test (Matching Reference Benchmark)
+
+1. QUANTITATIVE EXPLAINABILITY ALIGNMENT METRICS
+--------------------------------------------------------------------------------
+- Built-in Feature Importance Spearman Rank Correlation: rho = 0.8651 (p = 2.20e-25)
+- Test Permutation Importance Spearman Rank Correlation:  rho = 0.9111 (p = 3.81e-32)
+- Test SHAP Attribution Spearman Rank Correlation:       rho = 0.8883 (p = 2.02e-28)
+- Top-10 Feature Jaccard Overlap:                        100.0% (10/10 features preserved)
+
+INTERPRETATION:
+The high positive Spearman correlation (> 0.85) proves that hyperparameter
+optimization preserves the physical and domain validity of the models while
+sharpening sensitivity to top thermodynamic and elemental driver features.
+
+2. TOP 5 DRIVER FEATURES COMPARISON
+--------------------------------------------------------------------------------
+                                 Baseline_Avg_Importance_%  Optimized_Avg_Importance_%  Baseline_Rank  Optimized_Rank  Rank_Shift
+range_ThermalConductivity                        36.700868                   29.876229              1               1           0
+range_atomic_radius                               6.198092                    7.440468              3               2           1
+wtd_gmean_Valence                                 7.207022                    5.715761              2               3          -1
+wtd_std_ThermalConductivity                       4.106222                    4.551861              4               4           0
+wtd_entropy_ThermalConductivity                   2.569978                    3.352820              9               5           4
+
+3. LOCAL PREDICTION FIDELITY (INSTANCE ANALYSIS)
+--------------------------------------------------------------------------------
+Sample 1 (High Critical Temp Superconductor):
+  - Actual Tc:        132.52 K
+  - Baseline Pred:    136.40 K (Error: 3.88 K)
+  - Optimized Pred:   131.43 K (Error: 1.09 K)
+
+Sample 2 (Low Critical Temp Superconductor):
+  - Actual Tc:        0.06 K
+  - Baseline Pred:    -1.10 K (Error: 1.15 K)
+  - Optimized Pred:   -0.13 K (Error: 0.18 K)
+
+4. GENERATED ARTIFACTS
+--------------------------------------------------------------------------------
+CSVs:
+  - explainability_importance_comparison.csv
+  - explainability_permutation_comparison.csv
+Plots:
+  - explainability_importance_comparison.png
+  - explainability_permutation_comparison.png
+  - explainability_shap_summary_optimized.png
+  - explainability_shap_comparison_bar.png
+  - explainability_pdp_comparison.png
+================================================================================

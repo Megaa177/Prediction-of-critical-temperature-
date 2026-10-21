@@ -1,0 +1,19 @@
+EXPLAINABILITY REPORT SUMMARY
+============================================================
+Target Variable: critical_temp (Superconductor Critical Temp in Kelvin)
+Models Analyzed: XGBoost, CatBoost, AdaBoost
+
+Top 5 Driver Features across all Ensembles:
+                               Average_Importance
+range_ThermalConductivity               36.700868
+wtd_gmean_Valence                        7.207022
+range_atomic_radius                      6.198092
+wtd_std_ThermalConductivity              4.106222
+wtd_gmean_ThermalConductivity            3.867618
+
+Generated Explainability Artifacts:
+1. explainability_builtin_feature_importances.csv
+2. explainability_feature_importances.png
+3. explainability_permutation_importances.csv
+4. explainability_partial_dependence.png
+============================================================
