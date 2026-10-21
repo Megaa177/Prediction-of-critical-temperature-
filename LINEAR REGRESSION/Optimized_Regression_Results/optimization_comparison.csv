@@ -1,0 +1,4 @@
+Method,Best_Alpha,Validation_RMSE,Optimization_Time_sec
+Bayesian Optimization,0.0001,17.725231381500773,12.367616176605225
+Genetic Algorithm,0.0001,17.725231381500773,9.195621252059937
+Particle Swarm Optimization,0.0001,17.725231381500773,12.936561346054077
